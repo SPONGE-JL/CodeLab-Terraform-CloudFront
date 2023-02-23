@@ -18,7 +18,7 @@
 ```bash
 # Set
 export BACKEND_S3_REGION="ap-northeast-2"
-export BACKEND_S3_BUCKET="cloudfront-for-next-js-$(date '+%y%m%d-%H%M%S')"
+export BACKEND_S3_BUCKET="terraform-contents-about-cloudfront-for-next-js-$(date '+%y%m%d-%H%M%S')"
 
 # Check
 env | egrep "BACKEND_S3_"
@@ -123,7 +123,7 @@ aws s3api get-bucket-ownership-controls \
 }
 ```
 
-You can also check in console at `Permission > Object Ownership` like this:
+You can also check in console at `Permission > Object Ownership > Edit` like this:
 
 ![result-object-ownership](images/about-backend/result-object-ownership.png)
 
@@ -137,7 +137,7 @@ You can also check in console at `Permission > Object Ownership` like this:
 aws s3api put-bucket-versioning \
     --region ${BACKEND_S3_REGION} \
     --bucket ${BACKEND_S3_BUCKET} \
-    --versioning-configuration Status=Enabled
+    --versioning-configuration "Status=Enabled"
 
 # Check
 aws s3api get-bucket-versioning \
@@ -169,10 +169,10 @@ You can also check in console at `Properties > Bucket Versioning` like this:
 env | egrep "BACKEND_S3_"
 
 # Preview 
-envsubst < .history/backend.template
+envsubst < .setup-history/backend.template
 
 # Create backend.tf file
-envsubst < .history/backend.template > backend.tf
+envsubst < .setup-history/backend.template > backend.tf
 ```
 
 - Check this files:
@@ -184,5 +184,5 @@ envsubst < .history/backend.template > backend.tf
 terraform init
 
 # Check
-terrafrom plan
+terraform plan
 ```
