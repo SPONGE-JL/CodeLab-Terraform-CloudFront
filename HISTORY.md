@@ -1,7 +1,7 @@
 # History
 
-- [Prerequisites](.history/a-prerequisites.md)
-- [Remote Backend](.history/b-remote-backend.md)
+- [Prerequisites](.setup-history/a-prerequisites.md#a-prerequisites)
+- [Remote Backend](.setup-history/b-remote-backend.md#b-prepare-remote-backend)
 
 TODO: svg
 
