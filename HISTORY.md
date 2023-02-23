@@ -1,4 +1,4 @@
-# CodeLab-Terraform-CloudFront
+# History
 
 Essential Front-end Production Stack using [Terraform](https://developer.hashicorp.com/terraform/intro) of Hashicorp.
 
@@ -6,10 +6,11 @@ TODO
 
 D2 source: [`.diagram/cloudfront-for-next-js.d2`](.diagram/cloudfront-for-next-js.d2)
 
-- [CodeLab-Terraform-CloudFront](#codelab-terraform-cloudfront)
+- [History](#history)
   - [Prerequisites](#prerequisites)
     - [P-1. CLI tools](#p-1-cli-tools)
     - [P-2. Set AWS Credentials](#p-2-set-aws-credentials)
+    - [P-3. Enable pre-commit hook](#p-3-enable-pre-commit-hook)
 
 ---
 
@@ -23,7 +24,25 @@ D2 source: [`.diagram/cloudfront-for-next-js.d2`](.diagram/cloudfront-for-next-j
 - [Install AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html):
   recommend [using brew](https://formulae.brew.sh/formula/awscli) for Mac user
 
+- [Install pre-commit](https://pre-commit.com/#install):
+  recommend [using brew](https://formulae.brew.sh/formula/pre-commit) for Mac user
+
 ### P-2. Set AWS Credentials
+
+```bash
+# Set the profile include assuming
+export AWS_PROFILE="sandbox-iac-execution"
+
+# Check
+aws sts get-caller-identity --output json | jq
+
+# Result would be like this
+# {
+#   "UserId": "XXXXXXXXXXXXXXXXXXXXX:botocore-session-XXXXXXXXXX"
+#   "Account": "XXXXXXXXXXXX"
+#   "Arn": "arn:aws:sts::XXXXXXXXXXXX:assumed-role/terraform-executable-role/botocore-session-XXXXXXXXXX"
+# }
+```
 
 <details>
 <summary>&nbsp;Here is reference format for <code>~/.aws/credentials</code></summary><br/>
@@ -48,17 +67,14 @@ role_arn       = arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 
 </details>
 
+### P-3. Enable pre-commit hook
+
 ```bash
-# Set the profile include assuming
-export AWS_PROFILE="sandbox-iac-execution"
+# Check installation
+pre-commmit --version
 
-# Check
-aws sts get-caller-identity --output json | jq
-
-# Result would be like this
-# {
-# "UserId": "XXXXXXXXXXXXXXXXXXXXX:botocore-session-XXXXXXXXXX"
-# "Account": "XXXXXXXXXXXX"
-# "Arn": "arn:aws:sts::XXXXXXXXXXXX:assumed-role/terraform-executable-role/botocore-session-XXXXXXXXXX"
-# }
+# Update latest version
+pre-commit autoupdate
 ```
+
+Reference: [pre-commmit usage](https://pre-commit.com/#usage)

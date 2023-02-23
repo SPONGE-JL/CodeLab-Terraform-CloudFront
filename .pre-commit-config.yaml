@@ -1,0 +1,35 @@
+# Ref :: https://pre-commit.com/#adding-pre-commit-plugins-to-your-project
+fail_fast: true
+minimum_pre_commit_version: 3.0.0
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.77.1
+    hooks:
+      - name: Terraform Format
+        id: terraform_fmt
+
+      - name: Terraform Lock Provider
+        id: terraform_providers_lock
+        args:
+          - --args=-platform=windows_amd64
+          - --args=-platform=darwin_amd64
+
+      - name: Terraform Lint with 'tflint'
+        id: terraform_tflint
+        args:
+          - --args=--enable-rule=terraform_documented_variables
+
+      # - name: Terraform Scan with 'tfsec'
+      #   id: terraform_tfsec
+
+      - name: Terraform Validation
+        id: terraform_validate
+        args:
+          - --init-args=-lockfile=readonly
+
+      - name: Terraform Documentation
+        id: terraform_docs
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
