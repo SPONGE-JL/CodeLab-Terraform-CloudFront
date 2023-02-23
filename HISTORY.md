@@ -1,7 +1,8 @@
 # History
 
-Essential Front-end Production Stack using [Terraform](https://developer.hashicorp.com/terraform/intro) of Hashicorp.
+- [Prerequisites](.history/a-prerequisites.md)
+- [Remote Backend](.history/b-remote-backend.md)
 
-TODO
+TODO: svg
 
 D2 source: [`.diagram/cloudfront-for-next-js.d2`](.diagram/cloudfront-for-next-js.d2)
