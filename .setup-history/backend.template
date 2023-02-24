@@ -1,0 +1,17 @@
+terraform {
+  # ? Ref. https://developer.hashicorp.com/terraform/language/settings/backends/s3
+  backend "s3" {
+    region  = "${BACKEND_S3_REGION}"
+    bucket  = "${BACKEND_S3_BUCKET}"
+    key     = "${BACKEND_S3_KEY}terraform.tfstate"
+    encrypt = true
+  }
+
+  # ? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+}
