@@ -1,7 +1,3 @@
-# Masking the backend information
-backend.tf
-
-# -------------------------------
 # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode,sublimetext,git,tortoisegit,terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode,sublimetext,git,tortoisegit,terraform
 

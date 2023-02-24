@@ -13,14 +13,17 @@
 
 ## B1. Prepare
 
+```bash
+# Check AWS credentials
+aws sts get-caller-identity --output json | jq
+```
+
 ### B1-0. Set environment variables
 
 ```bash
-# Set
 export BACKEND_S3_REGION="ap-northeast-2"
-export BACKEND_S3_BUCKET="terraform-contents-about-cloudfront-for-next-js-$(date '+%y%m%d-%H%M%S')"
-
-# Check
+export BACKEND_S3_BUCKET="codelab-terraform-backend-since-$(date '+%y%m%d-%H%M%S')"
+export BACKEND_S3_KEY="codelab/cloudfront-for-next-js/"
 env | egrep "BACKEND_S3_"
 ```
 
@@ -171,15 +174,8 @@ env | egrep "BACKEND_S3_"
 # Preview 
 envsubst < .setup-history/backend.template
 
-# Create backend.tf file
-envsubst < .setup-history/backend.template > backend.tf
-```
+# Add contents at provider.tf file
 
-- Check this files:
-  - [`.history/backend.template`](backend.template)
-  - [`.gitignore`](../.gitignore#L1-L2)
-
-```bash
 # Initiation
 terraform init
 
