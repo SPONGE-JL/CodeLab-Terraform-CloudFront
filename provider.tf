@@ -1,10 +1,10 @@
 # ========================================
-# // Configure the Backend
+# // Configure the Backend and Providers
 # ========================================
 terraform {
-  required_version = ">=v1.3.0"
+  required_version = ">= v1.3.0"
 
-  # ? Ref. https://developer.hashicorp.com/terraform/language/settings/backends/s3
+  #? Ref. https://developer.hashicorp.com/terraform/language/settings/backends/s3
   backend "s3" {
     region  = "ap-northeast-2"
     bucket  = "codelab-terraform-backend-since-230224-120938"
@@ -12,7 +12,7 @@ terraform {
     encrypt = true
   }
 
-  # ? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
+  #? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -21,14 +21,12 @@ terraform {
   }
 }
 
-# ========================================
-# // Configure the Provider
-# ========================================
 provider "aws" {
-  region = "ap-northeast-2"
+  region = var.region
+  #? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
 }
 
 provider "aws" {
   alias  = "acm_provider"
-  region = "ap-northeast-2"
+  region = var.region
 }
