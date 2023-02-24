@@ -35,8 +35,8 @@ terraform apply -var-file=input.auto.tfvars
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= v1.3.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.55.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.3.9 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 4.55.0 |
 
 ## Providers
 
@@ -54,7 +54,7 @@ terraform apply -var-file=input.auto.tfvars
 
 | Name | Type |
 |------|------|
-| [aws_s3_bucket_cors_configuration.www_bucket_cors](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_cors_configuration) | resource |
+| [aws_s3_bucket_cors_configuration.static_cors_config](https://registry.terraform.io/providers/hashicorp/aws/4.55.0/docs/resources/s3_bucket_cors_configuration) | resource |
 
 ## Inputs
 

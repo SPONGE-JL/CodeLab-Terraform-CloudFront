@@ -9,7 +9,7 @@ module "static_destination" {
   bucket_tags = var.common_tags
 }
 
-resource "aws_s3_bucket_cors_configuration" "www_bucket_cors" {
+resource "aws_s3_bucket_cors_configuration" "static_cors_config" {
   depends_on = [module.static_destination]
   bucket     = module.static_destination.bucket_id
 

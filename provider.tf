@@ -2,7 +2,7 @@
 # // Configure the Backend and Providers
 # ========================================
 terraform {
-  required_version = ">= v1.3.0"
+  required_version = "1.3.9"
 
   #? Ref. https://developer.hashicorp.com/terraform/language/settings/backends/s3
   backend "s3" {
@@ -16,7 +16,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.55.0"
+      version = "4.55.0"
     }
   }
 }
