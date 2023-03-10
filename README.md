@@ -15,6 +15,7 @@ D2 source: [`.diagram/cloudfront-for-next-js.d2`](.diagram/cloudfront-for-next-j
   - [History](#history)
   - [ETC](#etc)
     - [ACM Certificate](#acm-certificate)
+    - [DNS Records](#dns-records)
 
 ## Quick start
 
@@ -36,6 +37,25 @@ terraform plan -var-file=input.auto.tfvars
 
 # Provision
 terraform apply -var-file=input.auto.tfvars
+```
+
+Try deploy command on your static contents
+
+```bash
+# Set environment variables
+export TARGET_S3_BUCKET_NAME="day1.poc-in.site"
+export TARGET_CF_DISTRIBUTION_ID="_CHECK_TERRAFORM_OUTPUT_" # dist_id_for_refresh
+env | grep "TARGET_"
+
+# Deploy using sync the all static contents in current directory to S3 bucket
+aws s3 sync --color=on \
+  "./" \
+  "s3://${TARGET_S3_BUCKET_NAME}/"
+
+# Refresh CloudFront Cache
+aws cloudfront create-invalidation \
+  --paths "/*" \
+  --distribution-id "${TARGET_CF_DISTRIBUTION_ID}" | jq
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -75,7 +95,9 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dist_domain_name"></a> [dist\_domain\_name](#output\_dist\_domain\_name) | ======================================== // CF: Contents Delivery Network ======================================== |
+| <a name="output_dist_domain_name_for_CNAME_name"></a> [dist\_domain\_name\_for\_CNAME\_name](#output\_dist\_domain\_name\_for\_CNAME\_name) | ======================================== // CF: Contents Delivery Network ======================================== |
+| <a name="output_dist_domain_name_for_CNAME_value"></a> [dist\_domain\_name\_for\_CNAME\_value](#output\_dist\_domain\_name\_for\_CNAME\_value) | n/a |
+| <a name="output_dist_id_for_refresh"></a> [dist\_id\_for\_refresh](#output\_dist\_id\_for\_refresh) | n/a |
 | <a name="output_dist_viewer_certificate"></a> [dist\_viewer\_certificate](#output\_dist\_viewer\_certificate) | n/a |
 | <a name="output_ssl_certi_certificate_chain"></a> [ssl\_certi\_certificate\_chain](#output\_ssl\_certi\_certificate\_chain) | n/a |
 | <a name="output_ssl_certi_domain_name"></a> [ssl\_certi\_domain\_name](#output\_ssl\_certi\_domain\_name) | n/a |
@@ -102,3 +124,7 @@ No resources.
     ![acm-certificate-issued-dig](.setup-history/images/about-certificate/acm-certificate-issued-dig.png)
 
     ![acm-certificate-issued](.setup-history/images/about-certificate/acm-certificate-issued.png)
+
+### DNS Records
+
+![example-dns-record-setting](.setup-history/images/about-certificate/example-dns-record-setting.png)
