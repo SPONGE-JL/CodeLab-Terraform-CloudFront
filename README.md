@@ -95,15 +95,15 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dist_domain_name_for_CNAME_name"></a> [dist\_domain\_name\_for\_CNAME\_name](#output\_dist\_domain\_name\_for\_CNAME\_name) | ======================================== // CF: Contents Delivery Network ======================================== |
-| <a name="output_dist_domain_name_for_CNAME_value"></a> [dist\_domain\_name\_for\_CNAME\_value](#output\_dist\_domain\_name\_for\_CNAME\_value) | n/a |
-| <a name="output_dist_id_for_refresh"></a> [dist\_id\_for\_refresh](#output\_dist\_id\_for\_refresh) | n/a |
-| <a name="output_dist_viewer_certificate"></a> [dist\_viewer\_certificate](#output\_dist\_viewer\_certificate) | n/a |
-| <a name="output_ssl_certi_certificate_chain"></a> [ssl\_certi\_certificate\_chain](#output\_ssl\_certi\_certificate\_chain) | n/a |
-| <a name="output_ssl_certi_domain_name"></a> [ssl\_certi\_domain\_name](#output\_ssl\_certi\_domain\_name) | n/a |
-| <a name="output_ssl_certi_status"></a> [ssl\_certi\_status](#output\_ssl\_certi\_status) | ======================================== // ACM: Managed SSL Certification ======================================== |
-| <a name="output_ssl_certi_validation_method"></a> [ssl\_certi\_validation\_method](#output\_ssl\_certi\_validation\_method) | n/a |
-| <a name="output_statics_destination_bucket_name"></a> [statics\_destination\_bucket\_name](#output\_statics\_destination\_bucket\_name) | ======================================== // S3: Deployment Destiation ======================================== |
+| <a name="output_dist_domain_name_for_CNAME_name"></a> [dist\_domain\_name\_for\_CNAME\_name](#output\_dist\_domain\_name\_for\_CNAME\_name) | [dist] DNS CNAME name part |
+| <a name="output_dist_domain_name_for_CNAME_value"></a> [dist\_domain\_name\_for\_CNAME\_value](#output\_dist\_domain\_name\_for\_CNAME\_value) | [dist] DNS CNAME value part |
+| <a name="output_dist_id_for_refresh"></a> [dist\_id\_for\_refresh](#output\_dist\_id\_for\_refresh) | [dist] Target Distribution ID for refreshing the cache |
+| <a name="output_dist_viewer_certificate"></a> [dist\_viewer\_certificate](#output\_dist\_viewer\_certificate) | [dist] Selected SSL certificate |
+| <a name="output_ssl_certi_certificate_chain"></a> [ssl\_certi\_certificate\_chain](#output\_ssl\_certi\_certificate\_chain) | [ssl\_serti] chain domain name |
+| <a name="output_ssl_certi_domain_name"></a> [ssl\_certi\_domain\_name](#output\_ssl\_certi\_domain\_name) | [ssl\_serti] main domain name |
+| <a name="output_ssl_certi_status"></a> [ssl\_certi\_status](#output\_ssl\_certi\_status) | [ssl\_serti] Validation Status - ISSUED(checked) / Pending(in-progress) / Fail |
+| <a name="output_ssl_certi_validation_method"></a> [ssl\_certi\_validation\_method](#output\_ssl\_certi\_validation\_method) | [ssl\_serti] Validation Method - DNS, Email |
+| <a name="output_statics_destination_bucket_name"></a> [statics\_destination\_bucket\_name](#output\_statics\_destination\_bucket\_name) | [statics\_destation] S3 Bucket name to deploy the static contents |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## History

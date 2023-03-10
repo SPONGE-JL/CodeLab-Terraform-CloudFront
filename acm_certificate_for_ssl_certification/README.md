@@ -37,9 +37,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_ssl_certi_arn"></a> [ssl\_certi\_arn](#output\_ssl\_certi\_arn) | n/a |
-| <a name="output_ssl_certi_certificate_chain"></a> [ssl\_certi\_certificate\_chain](#output\_ssl\_certi\_certificate\_chain) | n/a |
-| <a name="output_ssl_certi_domain_name"></a> [ssl\_certi\_domain\_name](#output\_ssl\_certi\_domain\_name) | n/a |
-| <a name="output_ssl_certi_status"></a> [ssl\_certi\_status](#output\_ssl\_certi\_status) | ======================================== // ACM: Managed SSL Certification ======================================== |
-| <a name="output_ssl_certi_validation_method"></a> [ssl\_certi\_validation\_method](#output\_ssl\_certi\_validation\_method) | n/a |
+| <a name="output_ssl_certi_arn"></a> [ssl\_certi\_arn](#output\_ssl\_certi\_arn) | SSL certificate's ARN |
+| <a name="output_ssl_certi_certificate_chain"></a> [ssl\_certi\_certificate\_chain](#output\_ssl\_certi\_certificate\_chain) | SSL certificate's chain domain name |
+| <a name="output_ssl_certi_domain_name"></a> [ssl\_certi\_domain\_name](#output\_ssl\_certi\_domain\_name) | SSL certificate's domain name |
+| <a name="output_ssl_certi_status"></a> [ssl\_certi\_status](#output\_ssl\_certi\_status) | SSL certificate's validation status |
+| <a name="output_ssl_certi_validation_method"></a> [ssl\_certi\_validation\_method](#output\_ssl\_certi\_validation\_method) | SSL certificate's validation method |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

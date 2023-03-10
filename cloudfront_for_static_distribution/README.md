@@ -46,7 +46,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_distribution_domain_name"></a> [distribution\_domain\_name](#output\_distribution\_domain\_name) | ======================================== // AWS CloudFront Distribution ======================================== |
-| <a name="output_distribution_id"></a> [distribution\_id](#output\_distribution\_id) | n/a |
-| <a name="output_distribution_viewer_certificate"></a> [distribution\_viewer\_certificate](#output\_distribution\_viewer\_certificate) | n/a |
+| <a name="output_distribution_domain_name"></a> [distribution\_domain\_name](#output\_distribution\_domain\_name) | CloudFront Distribution's managed domain name - A record |
+| <a name="output_distribution_id"></a> [distribution\_id](#output\_distribution\_id) | CloudFront Distribution's ID |
+| <a name="output_distribution_viewer_certificate"></a> [distribution\_viewer\_certificate](#output\_distribution\_viewer\_certificate) | CloudFront Distribution's SSL certificate |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
