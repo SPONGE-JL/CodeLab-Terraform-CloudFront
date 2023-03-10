@@ -1,5 +1,5 @@
 # Ref :: https://pre-commit.com/#adding-pre-commit-plugins-to-your-project
-fail_fast: true
+fail_fast: false
 minimum_pre_commit_version: 3.0.0
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
@@ -11,13 +11,22 @@ repos:
           - --args=-platform=windows_amd64
           - --args=-platform=darwin_amd64
 
-      - id: tfupdate
-        name: Autoupdate Terraform versions
+      - name: Terraform AutoUpdate Provider Versions > AWS
+        id: tfupdate
+        args:
+          - --args=provider aws
+          - --args=--version "~> 4.55.0" # pin specified version
 
       - name: Terraform Validation
         id: terraform_validate
         args:
           - --hook-config=--retry-once-with-cleanup=true
+
+      # - name: Terraform Scan with 'tfsec'
+      #   id: terraform_tfsec
+
+      # - name: Terraform Scan with 'terrascan'
+      #   id: terrascan
 
       - name: Terraform Format
         id: terraform_fmt
@@ -27,12 +36,19 @@ repos:
         args:
           - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
 
-      # - name: Terraform Scan with 'tfsec'
-      #   id: terraform_tfsec
-
       - name: Terraform Documentation
         id: terraform_docs
         args:
           - --hook-config=--path-to-file=README.md
           - --hook-config=--add-to-existing-file=true
           - --hook-config=--create-file-if-not-exist=true
+
+      # - name: Terraform InfraCost Estimataion
+      #   id: infracost_breakdown
+      #   args:
+      #     - --args=--path=./env/dev
+      #     - --args=--terraform-var-file="input.auto.tfvars"
+      #     - --hook-config='.totalHourlyCost|tonumber > 0.1'
+      #     - --hook-config='.totalHourlyCost|tonumber > 1'
+      #     - --hook-config='.projects[].diff.totalMonthlyCost|tonumber != 10000'
+      #     - --hook-config='.currency == "USD"'

@@ -2,7 +2,7 @@
 # // Configure the Backend and Providers
 # ========================================
 terraform {
-  required_version = ">= v1.3.0"
+  required_version = "1.3.9"
 
   #? Ref. https://developer.hashicorp.com/terraform/language/settings/backends/s3
   backend "s3" {
@@ -24,9 +24,4 @@ terraform {
 provider "aws" {
   region = var.region
   #? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
-}
-
-provider "aws" {
-  alias  = "acm_provider"
-  region = var.region
 }

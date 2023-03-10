@@ -16,6 +16,12 @@
 - [Install pre-commit](https://pre-commit.com/#install):
   recommend [using brew](https://formulae.brew.sh/formula/pre-commit) for Mac user
 
+  - [Install tflint](https://github.com/terraform-linters/tflint#installation):
+    recommend [using brew](https://formulae.brew.sh/formula/tflint)
+
+  - [Install tfupdate](https://github.com/minamijoyo/tfupdate#install):
+    recommend [using brew](https://formulae.brew.sh/formula/tfupdate)
+
 ## A2. Set AWS Credentials
 
 ```bash
