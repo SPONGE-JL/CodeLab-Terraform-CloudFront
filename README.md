@@ -21,15 +21,15 @@ D2 source: [`.diagram/cloudfront-for-next-js.d2`](.diagram/cloudfront-for-next-j
 ```bash
 # Download required modules
 terraform init
-
-# Format
-terraform fmt -recursive
 ```
 
 ```bash
 # AWS Profile
 export AWS_PROFILE="MY_PROFILE"
 aws sts get-caller-identity --output json | jq
+
+# Format
+terraform fmt -recursive
 
 # Plan
 terraform plan -var-file=input.auto.tfvars

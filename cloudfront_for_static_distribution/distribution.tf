@@ -1,11 +1,23 @@
 # ========================================
 # // AWS CloudFront Distribution
 # ========================================
+data "aws_s3_bucket" "distribution_origin_bucket" {
+  bucket = var.domain_name
+}
+
 resource "aws_cloudfront_distribution" "distribution" {
+
   origin {
-    domain_name              = var.domain_name
+    domain_name              = data.aws_s3_bucket.distribution_origin_bucket.bucket_domain_name
     origin_id                = var.origin_s3_bucket_id
     origin_access_control_id = aws_cloudfront_origin_access_control.distribution_oac.id
+
+    # custom_origin_config {
+    #   http_port              = 80
+    #   https_port             = 443
+    #   origin_protocol_policy = "http-only"
+    #   origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+    # }
   }
   enabled             = true
   default_root_object = "index.html"
@@ -26,6 +38,14 @@ resource "aws_cloudfront_distribution" "distribution" {
 
     origin_request_policy_id = data.aws_cloudfront_origin_request_policy.distribution_policy_org_req.id
     cache_policy_id          = data.aws_cloudfront_cache_policy.distribution_policy_cache.id
+
+    # forwarded_values {
+    #   query_string = false
+
+    #   cookies {
+    #     forward = "none"
+    #   }
+    # }
 
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 31536000
@@ -55,7 +75,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 # ========================================
 resource "aws_cloudfront_origin_access_control" "distribution_oac" {
   name                              = "oac-${var.domain_name}"
-  description                       = "Origin Access Control"
+  description                       = "distribution - Origin Access Control"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

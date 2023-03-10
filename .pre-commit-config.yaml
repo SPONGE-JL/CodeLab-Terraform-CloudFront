@@ -1,5 +1,5 @@
 # Ref :: https://pre-commit.com/#adding-pre-commit-plugins-to-your-project
-fail_fast: true
+fail_fast: false
 minimum_pre_commit_version: 3.0.0
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform

@@ -26,7 +26,8 @@ module "distribution" {
 module "ssl_certi_for_distribution" {
   source = "./acm_certificate_for_ssl_certification"
 
-  region          = var.region
+  # ? https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cnames-and-https-requirements.html#https-requirements-aws-region
+  region          = "us-east-1"
   domain_name     = local.domain_name
   certificate_tag = var.common_tags
 }
