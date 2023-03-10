@@ -1,23 +1,43 @@
-# ========================================
-# // S3: Deployment Destiation of Next.js
-# ========================================
-module "static_destination" {
-  source = "./s3_bucket_for_static_contents"
-  region = var.region
-
-  bucket_name = "${var.svc_app_name}.${var.svc_root_domain}"
-  bucket_tags = var.common_tags
+locals {
+  domain_name = "${var.svc_app_name}.${var.svc_root_domain}"
 }
 
-resource "aws_s3_bucket_cors_configuration" "static_cors_config" {
-  depends_on = [module.static_destination]
-  bucket     = module.static_destination.bucket_id
+# ========================================
+# // CF: Contents Delivery Network
+# ========================================
+module "distribution" {
+  source = "./cloudfront_for_static_distribution"
 
-  # ! Ref > https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html
-  cors_rule {
-    allowed_headers = ["Authorization", "Content-Length"]
-    allowed_methods = ["GET", "POST"]
-    allowed_origins = ["https://*.${var.svc_root_domain}"]
-    max_age_seconds = 3000
-  }
+  region            = var.region
+  domain_name       = local.domain_name
+  distribution_tags = var.common_tags
+
+  # ACM
+  acm_certificate_arn = module.ssl_certi_for_distribution.ssl_certi_arn
+
+  # Origin
+  origin_s3_bucket_arn = module.statics_destination.created_bucket_arn
+  origin_s3_bucket_id  = module.statics_destination.created_bucket_id
+}
+
+# ========================================
+# // ACM: Managed SSL Certification
+# ========================================
+module "ssl_certi_for_distribution" {
+  source = "./acm_certificate_for_ssl_certification"
+
+  region          = var.region
+  domain_name     = local.domain_name
+  certificate_tag = var.common_tags
+}
+
+# ========================================
+# // S3: Deployment Destiation
+# ========================================
+module "statics_destination" {
+  source = "./s3_bucket_for_static_contents"
+
+  region      = var.region
+  bucket_name = local.domain_name
+  bucket_tags = var.common_tags
 }

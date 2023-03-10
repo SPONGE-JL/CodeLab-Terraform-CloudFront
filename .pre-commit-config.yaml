@@ -15,7 +15,7 @@ repos:
         id: tfupdate
         args:
           - --args=provider aws
-          - --args=--version ~> 4.55.0 # pin specified version
+          - --args=--version "~> 4.55.0" # pin specified version
 
       - name: Terraform Validation
         id: terraform_validate

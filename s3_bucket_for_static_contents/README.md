@@ -38,5 +38,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_bucket_id"></a> [bucket\_id](#output\_bucket\_id) | n/a |
+| <a name="output_created_bucket_arn"></a> [created\_bucket\_arn](#output\_created\_bucket\_arn) | n/a |
+| <a name="output_created_bucket_id"></a> [created\_bucket\_id](#output\_created\_bucket\_id) | n/a |
+| <a name="output_created_bucket_name"></a> [created\_bucket\_name](#output\_created\_bucket\_name) | ======================================== // S3: Deployment Destiation of Next.js ======================================== |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

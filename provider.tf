@@ -16,7 +16,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.55.0"
+      version = "~> 4.55.0"
     }
   }
 }
@@ -24,9 +24,4 @@ terraform {
 provider "aws" {
   region = var.region
   #? Ref. https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference
-}
-
-provider "aws" {
-  alias  = "acm_provider"
-  region = var.region
 }
